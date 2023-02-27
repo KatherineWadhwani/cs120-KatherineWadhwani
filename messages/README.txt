@@ -1,6 +1,6 @@
 Project by Katherine Wadhwani
 
-Correctness and Troubleshooting;
+Correctness and Troubleshooting:
 To the best of my understanding, all parts of this project have been implemented correctly.
 
 Collaboration:
