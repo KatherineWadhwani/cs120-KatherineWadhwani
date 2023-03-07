@@ -29,7 +29,9 @@
 	var timer = document.getElementById("timer");
 	video.addEventListener("timeupdate", function() {
 		timer.innerHTML = video.currentTime;
-		
+		if (video.currentTime < 5.5) {
+			lyrics.innerHTML = "";
+		}
 		if (video.currentTime > 5.5 && video.currentTime < 8.2) {
 			lyrics.innerHTML = "<h3>Lisa: Come gather round, children,</h3>";
 		}
@@ -93,4 +95,3 @@
 		}, false);
 </script>
 </body>
-</html>
