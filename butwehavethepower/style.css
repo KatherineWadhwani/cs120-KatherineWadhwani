@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    font: Verdana;
+    }
+    #title { 
+    color:rgb(119, 119, 226);
+    text-align: center;
+    font: verdana;
+    font-weight: 900; 
+    font-variant: small-caps
+    }
+    h3{
+        color:rgb(119, 119, 226);
+        text-align: center;
+        font: arial;
+        font-weight: 900; 
+        font-size: x-large;
+
+
+    }
+    button {
+        background-color:rgb(255, 246, 77);
+    }
