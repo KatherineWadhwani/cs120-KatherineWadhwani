@@ -19,7 +19,7 @@ Performance Enhancements Analysis:
 No matter the modification, 1.9 MB of data were always loaded. Thus, enhacements appeared in the form of speed. I had
 originally forgotten to load my CSS first, so this was an important enhacement I incorporated in my final result. My website
 already loaded the JavaScript last (script tag right before closing body tag), so no change was necessary here. I was
-surprised that minifying the CSS did not confer more of an advantage. However, this is most likely because the CSS was extremely
+surprised that minifying the CSS did not confer an advantage. However, this is most likely because the CSS was extremely
 small. It's worth noting that loading the page in a new window under the same conditions elicited different results, so there
 was substantial variation which could explain why there wasn't a noticeable enhancement when minifying the CSS. Conversely,
 minifying the JavaScript code appeared to greatly impove efficiency. This is likely because the JavaScript file was much larger
