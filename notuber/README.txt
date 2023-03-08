@@ -31,7 +31,4 @@ surprised that loading the JavaScript last and minifying the CSS did not confer 
 loading the page in a new window under the same conditions and clearing the cache still elicited different results, so there was
 substantial variation which could explain why I didn't see the expected enhancements. Conversely, minifying the JavaScript code
 appeared to greatly impove efficiency. I hypothesize that a significant increase in preformance was seen when minifying the
-JavaScript file, as compared to minimizing the CSS file, because the Javascript file was was much larger. However, I did not
-incorporate the minified JavaScript code into my final result because it is much harder to read. Because this is the beginning of
-the project, I will likely have to edit my file and I would prefer a slightly less efficient version with which I can confidently
-interact. 
+JavaScript file, as compared to minimizing the CSS file, because the Javascript file was was much larger.
