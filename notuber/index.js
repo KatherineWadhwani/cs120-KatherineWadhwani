@@ -43,7 +43,6 @@ function connectToServerAndAddCars() {
         if (xhr.readyState === 4 && xhr.status == 200) {
             resultingData = xhr.responseText;
             message = JSON.parse(resultingData);
-
             for (numLines = 0; numLines < message.length; numLines++) {
                 //Create car markers and add them to the array of cars
                 carMarker = new google.maps.Marker({
@@ -91,26 +90,23 @@ function closestCar(cars) {
 
     //Iterate through all cars to find closest
     for (numLines = 0; numLines < cars.length; numLines++) {
-        distance = google.maps.geometry.spherical.computeDistanceBetween(marker.position, cars[numLines].position);
+        distance = google.maps.geometry.spherical.computeDistanceBetween(marker.position, cars[numLines].position) * 0.00062137
         if (distance < minDist) {
             minDist = distance;
             car = cars[numLines];
         }
     }
 
-    //Convert distance to miles
-    distance = 0.00062137 * distance;
-
     //Construct pop-up window message
     carIdString = car.username.toString();
-    distanceString = distance.toString();
-    message = "Car: ";
-    message = message.concat(carIdString);
-    message = message.concat(", Distance: ");
-    message = message.concat(distanceString);
-    message = message.concat(" miles");
+    distanceString = minDist.toString();
+    newTitle = "Car: ";
+    newTitle = newTitle.concat(carIdString);
+    newTitle = newTitle.concat(", Distance: ");
+    newTitle = newTitle.concat(distanceString);
+    newTitle = newTitle.concat(" miles");
 
-    marker.title = message;
+    marker.title = newTitle;
 
     //Draw polyline to closest car
     polyline(car);
