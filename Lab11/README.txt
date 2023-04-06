@@ -1,6 +1,3 @@
-
- 
-
 Project by Katherine Wadhwani
 
 Correctness and Troubleshooting;
