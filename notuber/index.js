@@ -34,7 +34,7 @@ window.initMap = function () {
 }
 
 function connectToServerAndAddCars() {
-    var url = "https://jordan-marsh.herokuapp.com/rides";
+    var url = "https://secure-fjord-47507.herokuapp.com/rides";
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
