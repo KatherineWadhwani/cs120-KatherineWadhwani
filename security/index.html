@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <div id="Introduction">
+        <h1> Introduction </h1>
+        <p> Not-Uber is a ride-hailing service. Before deploying their app, Not-Uber's creators wanted to conduct a
+            security and privacy assessment of their server (available at https://jordan-marsh.herokuapp.com/). As a
+            consultant, I pen-tested the system looking for vulnerabilities. My report is detailed below.</p>
+    </div>
+
+    <div id="Methodology">
+        <h1> Methodology </h1>
+        <p> After observing both the client-side website as well as the source code server-vuln.js, I had a better
+            understanding of how GET and POST requests were handled, as well as how the server interacted with the
+            database. This immediately alerted me to several vulnerabilities, particularly those in which user input was
+            not properly checked. From this, I constructed curl requests to target these vulnerabilities. I attempted to
+            spot more vulnerabilities using OWASP ZAP! While OWASP ZAP! was not as helpful as expected, it did alert me
+            to the page's html which enabled me to further tailor my attacks.</p>
+    </div>
+
+    <div id="Issues">
+        <h1> Issues </h1>
+
+        <p> <b> Issue 1: </b> Cross-Site Scripting</p>
+        <p> <b> Location:</b> /rides path</p>
+        <p> <b> Severity:</b> High Risk</p>
+        <p> <b> Description:</b> I was able to inject javascript by setting username to code that exploited the DOM
+            model. As seen in the image below, this code inserted a link (albeit a faulty link) to google. Specifically,
+            it created a html document element, set it to google, and inserted the element at the top of the document.
+            The code was nested between script tags to ensure that it was interpreted as javascript. Under no
+            circumstances should a user be able to modify the website by directing users to another site.
+        </p>
+        <p> <b> Proof of Vulnerability:</b> </p>
+        <img src="prob1.pdf" alt="Proof of Cross-Site Scripting">
+        <p> <b> Resolution:</b> The username field should not allow the less-than character. Without this character,
+            script tags would not be possible. </p>
+
+
+        <p> <b> Issue 2: </b> SQL Injection</p>
+        <p> <b> Location:</b> /update and /vehicles.json paths</p>
+        <p> <b> Severity:</b> High Risk</p>
+        <p> <b> Description:</b> Using the /update path, I was able to design a malicious value for username that
+            deleted the vehicles table. By creating a value that contained a semicolon in the middle, the rest of the
+            value was no longer interpreted as part of the username. This allowed me to execute the query "DROP
+            vehicles;" which removed the entire table. As seen in the images below, the same get request was run using
+            the /vehicles.json path. The first is before the table was deleted and the second is after. </p>
+        <p> <b> Proof of Vulnerability:</b> </p>
+        <img src="prob3.pdf" alt="Before SQL Injection Attack">
+        <img src="prob2.pdf" alt="After SQL Injection Attack">
+        <p> <b> Resolution:</b> The username field should not allow the semicolon character. I would suggest restricting
+            username to alphanumeric characters and apostrophes. By limiting special characters in this way, SQL
+            injection would not be possible. </p>
+
+
+
+        <p> <b> Issue 3: </b> General Privacy</p>
+        <p> <b> Location:</b>/rides and /vehicle.json paths</p>
+        <p> <b> Severity:</b> Medium Risk</p>
+        <p> <b> Description:</b> Using the /vehicle.json path, users can get data regarding rides that other passengers
+            took. Most notably, this information contains passenger username. Username can then be passed into the
+            /vehicle.json and /passenger.json paths to reveal sensitive information about other passengers. Users
+            should never be able to access data regarding other passengers' trips. Trips include extremely sensitive
+            information such as latitude/longitude which can be used to find passengers homes etc.</p>
+        <p> <b> Proof of Vulnerability:</b> </p>
+        <img src="prob3.pdf" alt="Proof of General Privacy Concerns">
+        <p> <b> Resolution:</b> Only show passengers the rides in which they participated. If it is deemed necessary to
+            show other rides, remove identifiable information such as username.</p>
+    </div>
+
+
+
+    <div id="Abstract of Findings">
+        <h1> Abstract of Findings </h1>
+        <p> My investigation revealed 3 major types of vulnerabilities. Users could input script that altered
+            and
+            redirected the webpage. Users could also delete records from the database. Finally, the site
+            returned
+            information
+            that could be used to reveal sensitive user information.</p>
+    </div>
+
+    <div id="Conclusion">
+        <h1> Conclusion </h1>
+        <p> While Not-Uber is an exciting and novel company, this investigation has found it to be a lawsuit
+            waiting to happen. A dataleak is inevitable and the potential for insertion of malicious code via user input
+            is endless. I strongly reccomend hiring skilled software engineers to "sanitize" user input, or validate
+            that it is indeed the expected content and does not include potentially malicious characters. Additonally, I
+            suggest limiting the information returned with the '/rides' path so as to preserve user privacy.
+
+        </p>
+    </div>
+
+
+</body>
