@@ -1,7 +1,7 @@
 Project by Katherine Wadhwani
 
 Correctness and Troubleshooting:
-To the best of my understanding, all parts of this project have been implemented correctly. I did, however, find it difficult to understand what I modifications I vs others had made, as the website kept changing.
+To the best of my understanding, all parts of this project have been implemented correctly. I did, however, find it difficult to understand what I modifications I versus others had made, as the website kept changing.
 
 Collaboration:
 I discussed this project with Thomas, Murt, and Dan. I was struggling and they kindly helped explain where I was going wrong. In particular, Thomas bettered my understanding of how to preform a SQL injection. All ideas, however, were my own.
