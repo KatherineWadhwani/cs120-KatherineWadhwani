@@ -9,7 +9,7 @@ I discussed this project with Thomas, Murt, and Dan. I was struggling and they k
 Hours to Complete:
 I took about 8 hours to complete the lab.
 
-Note: While we were not particularly asked to show our curl requests for our Security and Privacy Assessment report, I wanted to include them. Putting them in the html document proved difficult, as some were interpreted as script. For these reasons, I have included them here.
+Note: While we were not particularly asked to show our curl requests for our Security and Privacy Assessment report, I wanted to include them. Putting them in the html document proved difficult, as some were interpreted as script. For these reasons, I have displayed them below.
 
 
 <b>Cross-Site Scripting </b>
